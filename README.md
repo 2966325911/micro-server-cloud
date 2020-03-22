@@ -14,7 +14,3 @@
     "message": "I/O error on GET request for \"http://CLOUD-PAYMENT-SERVICE/payment/get/5\": 
 CLOUD-PAYMENT-SERVICE; nested exception is java.net.UnknownHostException: CLOUD-PAYMENT-SERVICE",
 ~~~
-
-git rm -r --cached .
-git add .
-git commit -m 'update .gitignore'
