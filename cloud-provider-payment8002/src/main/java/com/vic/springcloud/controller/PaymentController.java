@@ -23,23 +23,21 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-
     @PostMapping(value = "/create")
-    public CommonResult create (@RequestBody Payment payment) {
+    public CommonResult create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
-        log.info("--------插入结果--"+result + "serverPort" + serverPort);
-        if(result > 0) {
+        log.info("--------插入结果--" + result + "serverPort:" + serverPort);
+        if (result > 0) {
             return new ResponseResult().success();
         }
         return new ResponseResult().fail();
     }
 
     @GetMapping(value = "/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id){
+    public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
-        log.info("--------获取成功--serverPort="+ serverPort);
-        if(payment != null){
-            return  new ResponseResult().success(payment);
+        if (payment != null) {
+            return new ResponseResult().success(payment);
         }
         return new ResponseResult().fail("没有对应的记录");
     }

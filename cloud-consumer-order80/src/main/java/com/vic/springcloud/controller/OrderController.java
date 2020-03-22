@@ -18,7 +18,12 @@ import javax.annotation.Resource;
 @Slf4j
 @RequestMapping("/consumer/payment")
 public class OrderController {
-    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://localhost:8001";
+    /**
+     * 如果是集群，使用服务名称调用,使用服务名称调用，利用restTemplate请求必须
+     * 给RestTemplate配置相应的负载均衡机制，使其具有负载均衡能力，添加 @LoadBalanced注解即可
+     */
+    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
     @Resource
     private RestTemplate restTemplate;
 
