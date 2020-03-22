@@ -10,9 +10,6 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: 123456
-  cloud:
-    client:
-      ipAddress: http://localhost
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -20,9 +17,9 @@ mybatis:
 
 eureka:
   instance:
+    instance-id: payment8002:${server.port}
     # 显示本服务的ip地址
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
     # 表示是否将自己注册EurekaServer默认为true
     register-with-eureka: true

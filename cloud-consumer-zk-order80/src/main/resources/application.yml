@@ -1,0 +1,10 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service #服务注册名称
+  cloud:
+    zookeeper:
+      # zk的地址
+      connect-string: 127.0.0.1:2181

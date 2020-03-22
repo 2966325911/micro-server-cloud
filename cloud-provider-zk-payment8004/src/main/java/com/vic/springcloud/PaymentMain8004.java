@@ -3,7 +3,6 @@ package com.vic.springcloud;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author：vic
@@ -11,10 +10,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @desc: 主启动类
  */
 @SpringBootApplication
-@EnableEurekaClient
+//使用consul或zk 都用@EnableDiscoveryClient此注解
 @EnableDiscoveryClient
-public class PaymentMain8001 {
+public class PaymentMain8004 {
     public static void main(String[] args) {
-        SpringApplication.run(PaymentMain8001.class, args);
+        SpringApplication.run(PaymentMain8004.class, args);
     }
 }

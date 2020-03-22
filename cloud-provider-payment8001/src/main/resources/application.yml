@@ -10,9 +10,6 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: 123456
-  cloud:
-    client:
-      ipAddress: http://localhost
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -20,9 +17,13 @@ mybatis:
 
 eureka:
   instance:
+    instance-id: payment8001:${server.port}
     # 显示本服务的ip地址
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    #Eureka 客户端向服务端发送心跳的时间间隔，单位为妙（默认是30s）
+    lease-renewal-interval-in-seconds: 1
+    # Eureka 服务端在收到最后一次心跳后等待时间上线，单位为妙（默认是为90s），超时将被提出服务
+    lease-expiration-duration-in-seconds: 2
   client:
     # 表示是否将自己注册EurekaServer默认为true
     register-with-eureka: true
@@ -31,4 +32,6 @@ eureka:
     service-url:
       # 集群注册到 eureka则需要用逗号隔开不同的服务地址即可
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+    # eureka是否启用，false 为不启用
+    enabled: true
 
