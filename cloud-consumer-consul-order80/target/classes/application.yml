@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: consul-order-service #服务注册名称
+  cloud:
+    consul:
+      # consul的地址
+      host: 47.105.207.148
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
