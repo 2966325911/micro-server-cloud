@@ -41,6 +41,11 @@ public class PaymentController {
         }
         return new ResponseResult().fail("没有对应的记录");
     }
+
+    @GetMapping("/lb")
+    public String getLb(){
+        return serverPort;
+    }
 }
 
 

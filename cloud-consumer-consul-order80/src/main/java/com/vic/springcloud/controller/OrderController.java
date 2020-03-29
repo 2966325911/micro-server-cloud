@@ -41,7 +41,7 @@ public class OrderController {
 
     @GetMapping("/consul")
     public String paymentInfo() {
-        String url = PAYMENT_URL + "/payment/consul/";
+        String url = PAYMENT_URL + "/payment/consul";
         String result = restTemplate.getForObject(url,String.class);
         return result;
     }
