@@ -37,6 +37,7 @@ public class PaymentController {
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
+            log.info("--------获取结果--" + "serverPort:" + serverPort);
             return new ResponseResult().success(payment);
         }
         return new ResponseResult().fail("没有对应的记录");

@@ -13,7 +13,7 @@ spring:
   cloud:
     consul:
       # consul的地址
-      host: 47.105.207.148
+      host: localhost
       port: 8500
       discovery:
         service-name: ${spring.application.name}

@@ -40,3 +40,16 @@
    CLOUD-PAYMENT-SERVICE; nested exception is java.net.UnknownHostException: CLOUD-PAYMENT-SERVICE",
 ~~~
 eureka2.0 由于已经停止更新，故不再使用
+
+#### Hystrix 断路器  
+功能是，当对某个服务的调用在一定的时间内（默认10s，由metrics.rollingStats.timeInMilliseconds配置），有超过一定次数（默认20次，由circuitBreaker.requestVolumeThreshold参数配置）并且失败率超过一定值（默认50%，由circuitBreaker.errorThresholdPercentage配置），该服务的断路器会打开。返回一个由开发者设定的fallback
+
+重要概念：
+##### 服务降级
+   服务器忙，请稍后重试，不让客户等并立即返回一个友好提示，fallback  
+   发生降级的情况：程序异常、超时、服务熔断触发服务降级、线程池/信号量打满也会
+   导致服务降级
+##### 服务熔断
+达到最大服务访问后，直接拒绝访问，然后采用服务降级的方法并返回错误
+##### 服务限流
+秒杀高并发等操作，避免瞬时流量达到高峰，避免拥挤，一秒钟N个，有序进行
