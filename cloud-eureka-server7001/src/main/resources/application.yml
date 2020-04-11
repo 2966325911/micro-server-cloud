@@ -13,7 +13,8 @@ eureka:
     service-url:
       #设置与eureka交互的查询服务和注册服务都需要依赖这个地址 ，集群需要相互守望
       # 1 注册2的地址 2注册1的地址
-      defaultZone: http://eureka7002.com:7002/eureka/
+#      defaultZone: http://eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/
 #  server:
 #    # 关闭自我保护机制，保证不可用服务被及时移除， 保护机制默认为true
 #    enable-self-preservation: false
