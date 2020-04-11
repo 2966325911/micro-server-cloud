@@ -43,4 +43,16 @@ public class PaymentHystrixController {
         return result;
     }
 
+    /**
+     * 断路器测试
+     * 服务熔断，断路器，当错误达到一定的失败了之后，断路器开启，就算是正确的请求也会在短时间内返回
+     * 请求失败，当断路器关闭后，服务调用恢复正常
+     * @param id
+     * @return
+     */
+    @GetMapping("/payment/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        return paymentService.paymentCircuitBreaker(id);
+    }
+
 }
