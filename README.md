@@ -131,5 +131,56 @@ spring:
                 .build();
     }
 ```
+application.yml是用户级别的资源配置项  
+bootstrap.yml是系统级别的，加载优先级更高
+
+SpringCloud Config配置中心客户端配置
+
+server配置，application.yml
+```$xslt
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          # 跳过ssl认证
+          skipSslValidation: true
+          # git配置中心地址
+          uri: https://github.com/xxxxxx/springcloud-config.git
+          search-paths:
+            - springcloud-config
+      #读取分支名称
+      label: master
+```
+client配置，bootstrap.yml
+```$xslt
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master # 分支名称
+      name: config #配置文件名称
+      profile: dev # 读取的后缀，上述三个综合，为master分支上的config-dev.yml的配置文件被读取，http://config-3344.com:3344/master/config-dev.yml
+      uri: http://localhost:3344 #配置中心的地址,config的server端
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+#暴露监控端点，改变配置文件的yml时便于刷新
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+```
+还需在controller层配置@RefreshScope，完成配置后要想通过client端访问
+，还需动态刷新，需要发送请求post请求curl -X POST "http://localhost:3355/actuator/refresh"刷新后，再次调用即可刷新
 
 
