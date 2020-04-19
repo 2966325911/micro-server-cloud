@@ -26,12 +26,12 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/consumer/payment")
 public class OrderController {
-//    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://localhost:8001";
     /**
      * 如果是集群，使用服务名称调用,使用服务名称调用，利用restTemplate请求必须
      * 给RestTemplate配置相应的负载均衡机制，使其具有负载均衡能力，添加 @LoadBalanced注解即可
      */
-    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
+//    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
     @Resource
     private RestTemplate restTemplate;
 
@@ -73,5 +73,10 @@ public class OrderController {
         URI uri = instance.getUri();
         String url = uri + "/payment/lb";
         return restTemplate.getForObject(url,String.class);
+    }
+
+    @GetMapping("/zipkin")
+    public String paymentZipkin() {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin", String.class);
     }
 }

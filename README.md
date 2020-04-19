@@ -1,5 +1,5 @@
 # micro-server-cloud
-# 微服务学习SpringCloud
+# 微服务学习SpringCloud，均参考尚硅谷周阳老师springCloud2020的学习，在B站视频学习
 
 ## 一、服务注册于发现
 服务注册中心本质上是为了解耦服务提供者和服务消费者
@@ -204,3 +204,8 @@ Spring Cloud Stream is a framework for building highly scalable event-driven mic
 消息驱动：屏蔽底层消息中间件的差异，降低切换成本，统一消息的编程模型  
 微服务应用放置同一个group中，就能保证消息只会被其中一个应用消费一次，不同的组是可以消费的，同一个组内会发生竞争关系，只有其中一个可以消费。
  
+### 七、SpringCloud Sleuth 
+提供了一套完整的服务器跟踪的解决方案，在分布式系统中提供追踪解决方案并且兼容支持了zipkin  
+下载zipkin：https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec
+使用java -jar zipkin.jar启动zipkin server端，然后使用http://localhost:9411/zipkin 来访问  
+本项目中在cloud-provider-payment8001 和cloud-consumer-order80中演示
