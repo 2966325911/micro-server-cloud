@@ -134,7 +134,7 @@ spring:
 application.yml是用户级别的资源配置项  
 bootstrap.yml是系统级别的，加载优先级更高
 
-### SpringCloud Config配置中心客户端配置
+### 四、SpringCloud Config配置中心客户端配置
 
 server配置，application.yml
 ```$xslt
@@ -185,7 +185,7 @@ management:
 如果有多个客户端，则每个客户端都需要发送一次这样的请求，采用消息总线，则只需要在配置中心服务端发送一次，
 这样所有的客户端都可以收到该消息，进行自动刷新，不用手动去刷新其他客户端。
 
-### SpringCloud Bus 消息总线
+### 五、SpringCloud Bus 消息总线
 SpringCloud Bus是用来将分布式系统的节点与轻量级消息系统链接起来的框架，它整合了Java的事件处理机制和消息中间件的功能，
 目前支持的两种消息代理：RabbitMQ和Kafka  
 #### 消息总线
@@ -197,3 +197,10 @@ SpringCloud Bus是用来将分布式系统的节点与轻量级消息系统链�
 定点通知： curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
 只通知3355的进行改变，其他的保持依旧，config-client为服务名：3355为端口号
 
+### 六、消息驱动 spring cloud stream
+官网地址：https://spring.io/projects/spring-cloud-stream  
+Spring Cloud Stream is a framework for building highly scalable event-driven microservices connected with shared messaging systems.
+
+消息驱动：屏蔽底层消息中间件的差异，降低切换成本，统一消息的编程模型  
+微服务应用放置同一个group中，就能保证消息只会被其中一个应用消费一次，不同的组是可以消费的，同一个组内会发生竞争关系，只有其中一个可以消费。
+ 

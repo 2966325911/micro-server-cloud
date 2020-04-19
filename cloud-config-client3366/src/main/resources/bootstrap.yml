@@ -18,7 +18,6 @@ spring:
     password: admin
 
 
-
 eureka:
   client:
     service-url:
