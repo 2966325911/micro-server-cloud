@@ -16,7 +16,12 @@ spring:
             - springcloud-config
       #读取分支名称
       label: master
-
+  #rabbitmq相关配置，15672是web管理端口，web界面访问采用15672 ，5672是mq访问端口
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
 eureka:
   client:
     fetch-registry: true
@@ -24,15 +29,9 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
 
-
-#rabbitmq:
-#  host: localhost
-#  port: 5672
-#  username: guest
-#  password: guest
-## 暴露bus刷新配置的端点
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "bus-refresh"
+# 暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
