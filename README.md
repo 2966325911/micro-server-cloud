@@ -209,3 +209,12 @@ Spring Cloud Stream is a framework for building highly scalable event-driven mic
 下载zipkin：https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec
 使用java -jar zipkin.jar启动zipkin server端，然后使用http://localhost:9411/zipkin 来访问  
 本项目中在cloud-provider-payment8001 和cloud-consumer-order80中演示
+
+### Nacos 动态服务发现、配置管理和服务管理平台
+官网地址：https://github.com/alibaba/nacos
+
+Nacos：Dynamic Naming and Configuration Service    
+注册中心+配置中心的组合 Eureka+Config+Bus
+
+### SpringCloud Alibaba 
+官网地址 : https://spring.io/projects/spring-cloud-alibaba
