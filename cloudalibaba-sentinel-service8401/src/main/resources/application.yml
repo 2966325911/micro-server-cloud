@@ -15,6 +15,17 @@ spring:
         port: 8719
       # 取消sentinel懒加载
       eager: true
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            # 在nacos配置的dataId
+            dataId: ${spring.application.name}
+            # 在nacos配置的groupId
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
 #暴露监控端点
 management:
   endpoints:

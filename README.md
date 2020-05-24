@@ -218,3 +218,21 @@ Nacos：Dynamic Naming and Configuration Service
 
 ### SpringCloud Alibaba 
 官网地址 : https://spring.io/projects/spring-cloud-alibaba
+
+Sentinel持久化配置  
+在nacos创建对应的配置列表，使用json配置，配置的json如下：
+ 
+```
+[
+    {
+         
+        "resource":"/byUrl",#资源名称
+        "limitApp":"default",#来源应用
+        "grade":1,#阈值类型 0表示线程数 1 表示QPS
+        "count":1, #单机阈值
+        "strategy":0,# 流控模式 0 表示直接，1表示关联 2 表示链路
+        "controlBehavior":0, #流控效果 0表示快速失败 1 表示Warm up 2 表示排队等待
+        "clusterMode":false # 是否集群
+    }
+]
+```
